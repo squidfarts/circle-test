@@ -1,0 +1,48 @@
+version: 2.1
+orbs:
+  codecov: codecov/codecov@1.0.5
+
+executors:
+  meson_ubuntu_builder:
+    docker:
+      - image: squidfarts/ubontu-sys:dev-deps
+
+  meson_debain_builder:
+    docker:
+      - image: squidfarts/debian-sys:dev-deps
+
+  meson_fedora_builder:
+    docker:
+      - image: squidfarts/fedora-sys:dev-deps
+
+commands:
+  meson_build_project:
+    description: "Commands for Meson and Ninja to build my project."
+    steps:
+      - run: meson setup builddir --buildtype=minzise --backend ninja
+      - run: ninja -C builddir
+      - run: meson test -C builddir
+
+jobs:
+  meson_ubuntu_build:
+    executor: meson_ubuntu_builder
+    steps:
+      - meson_build_project:
+      
+  meson_debain_build:
+    executor: meson_debain_builder
+    steps:
+      - meson_build_project:
+
+  meson_fedora_build:
+    executor: meson_fedora_builder
+    steps:
+      - meson_build_project:
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - meson_ubuntu_build
+      - meson_debain_build
+      - meson_fedora_build
