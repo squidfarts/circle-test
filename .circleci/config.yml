@@ -3,7 +3,7 @@ version: 2.1
 executors:
   meson_ubuntu_builder:
     docker:
-      - image: squidfarts/ubontu-sys:dev-deps
+      - image: squidfarts/ubuntu-sys:dev-deps
 
   meson_debain_builder:
     docker:
