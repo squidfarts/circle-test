@@ -19,7 +19,7 @@ exe_main = executable(meson.project_name(),
     include_directories: exe_dir,
     install: true)
 
-if meson.backend() == 'ninja':
+if meson.backend() == 'ninja'
     run_target('run', command: exe_main)
 endif
 
