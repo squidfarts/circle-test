@@ -17,11 +17,10 @@ project('c-exe', 'c',
     license: 'Apache-2.0',
     meson_version: '>=0.50.0',
     default_options: [
-        'buildtype=minsize',
         'optimization=3', 
         'warning_level=3',
         'werror=true', 
-        'c_std=c17'
+        'c_std=c11'
         ]
 )
 lang = 'c'
