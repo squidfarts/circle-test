@@ -18,7 +18,7 @@ jobs:
     executor: meson_ubuntu_builder
     steps:
       - checkout
-      - run: meson setup builddir --buildtype=minsize --b_coverage=true --backend ninja
+      - run: meson setup builddir --buildtype=minsize --backend ninja --b_coverage=true
       - run: ninja -C builddir
       - run: meson test -C builddir
       - run: curl -s https://codecov.io/bash | bash
@@ -27,7 +27,7 @@ jobs:
     executor: meson_debain_builder
     steps:
       - checkout
-      - run: meson setup builddir --buildtype=minsize --b_coverage=true --backend ninja
+      - run: meson setup builddir --buildtype=minsize --backend ninja --b_coverage=true
       - run: ninja -C builddir
       - run: meson test -C builddir
       - run: curl -s https://codecov.io/bash | bash
@@ -36,7 +36,7 @@ jobs:
     executor: meson_fedora_builder
     steps:
       - checkout
-      - run: meson setup builddir --buildtype=minsize --b_coverage=true --backend ninja
+      - run: meson setup builddir --buildtype=minsize --backend ninja --b_coverage=true
       - run: ninja -C builddir
       - run: meson test -C builddir
       - run: curl -s https://codecov.io/bash | bash
