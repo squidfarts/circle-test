@@ -23,5 +23,5 @@ if meson.backend() == 'ninja'
     run_target('run', command: exe_main)
 endif
 
-benchmark('Benchmark exe')
+benchmark('Benchmark exe', exe_main)
 test('Test exe', exe_main)
