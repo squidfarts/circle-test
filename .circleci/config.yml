@@ -18,28 +18,25 @@ jobs:
     executor: meson_ubuntu_builder
     steps:
       - checkout
-      - run: meson setup builddir --buildtype=minsize --backend ninja -Db_coverage=true
+      - run: meson setup builddir --buildtype=minsize --backend ninja
       - run: ninja -C builddir
       - run: meson test -C builddir
-      - run: curl -s https://codecov.io/bash | bash
       
   meson_debain_build:
     executor: meson_debain_builder
     steps:
       - checkout
-      - run: meson setup builddir --buildtype=minsize --backend ninja -Db_coverage=true
+      - run: meson setup builddir --buildtype=minsize --backend ninja
       - run: ninja -C builddir
       - run: meson test -C builddir
-      - run: curl -s https://codecov.io/bash | bash
 
   meson_fedora_build:
     executor: meson_fedora_builder
     steps:
       - checkout
-      - run: meson setup builddir --buildtype=minsize --backend ninja -Db_coverage=true
+      - run: meson setup builddir --buildtype=minsize --backend ninja
       - run: ninja -C builddir
       - run: meson test -C builddir
-      - run: curl -s https://codecov.io/bash | bash
 
 workflows:
   version: 2
